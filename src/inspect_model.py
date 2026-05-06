@@ -18,8 +18,9 @@ def main():
     # ¡Aquí tienes tu modelo real de scikit-learn listo para usarse!
     print(f"Objeto del modelo: {type(best_model)}")
     
-    # También podemos recuperar los datos si los necesitamos
-    X_test = run.data.X_test
+    # Para recuperar datos que se guardaron ANTES de un branch paralelo (@foreach),
+    # debemos pedírselos específicamente al paso donde se crearon (paso 'start'):
+    X_test = run['start'].task.data.X_test
     print(f"Ejemplo: Recuperados los datos de prueba con forma {X_test.shape}")
 
 if __name__ == '__main__':
